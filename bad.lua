@@ -1,6 +1,5 @@
 local ImMenu = require("ImMenu")
 
-
 local isMenuOpen = false 
 local lastToggleTime = 0   
 
@@ -26,10 +25,15 @@ callbacks.Register("Draw", "ImMenuExample", function()
             if ImMenu.Button("Force Full Update") then
                 clientstate.ForceFullUpdate()  
             end
+            
+            local currentTime = os.date("*t")  
+            local hours = currentTime.hour
+            local minutes = currentTime.min
+            local seconds = currentTime.sec
+
+            ImMenu.Text(string.format("Current Time: %02d:%02d:%02d", hours, minutes, seconds))
 
             ImMenu.End()
         end
     end
 end)
-
-
